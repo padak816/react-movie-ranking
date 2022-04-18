@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import SearchForm from "./SearchForm";
 
 const Wrapper = styled.div`
   display: flex;
@@ -15,7 +16,7 @@ const Movies = () => {
   return (
     <Wrapper>
       <Title>🎬 박스오피스 랭킹</Title>
-      <div>조회</div>
+      <SearchForm />
       <div>차트</div>
       <div>테이블</div>
     </Wrapper>
