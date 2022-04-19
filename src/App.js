@@ -8,6 +8,12 @@ const GlobalStyle = createGlobalStyle`
     font-family: "Helvetica", "Arial", sans-serif;
     line-height: 1.5;
     margin: 50px;
+
+    .react-datepicker__input-container input{
+      width: 100px;
+      height:25px;
+      font-size: 15px;
+    }
   }
 `;
 
