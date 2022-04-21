@@ -16,13 +16,18 @@ const Select = styled.select`
   height: 30px;
 `;
 
-const SearchForm = () => {
-  const [date, setDate] = useState(new Date());
-  const [type, setType] = useState(null);
+const yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
+
+const SearchForm = ({ search }) => {
+  const [date, setDate] = useState(yesterday);
+  const [type, setType] = useState("default");
+  function onClickSearch() {
+    search({ targetDt: moment(date).format("YYYYMMDD"), repNationCd: type });
+  }
   return (
     <Filter>
       <Select value={type} onChange={(e) => setType(e.target.value)}>
-        <option value="">국내/해외</option>
+        <option value="default">국내/해외</option>
         <option value="K">국내</option>
         <option value="F">해외</option>
       </Select>
@@ -32,10 +37,11 @@ const SearchForm = () => {
           onChange={setDate}
           locale={ko}
           dateFormat="yyyy.MM.dd"
+          maxDate={yesterday}
           showPopperArrow={false}
         />
       </div>
-      <button>조회</button>
+      <button onClick={onClickSearch}>조회</button>
     </Filter>
   );
 };
