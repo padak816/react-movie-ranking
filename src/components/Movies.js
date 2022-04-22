@@ -27,7 +27,7 @@ const toThousandCommas = (number) => {
 
 const Movies = () => {
   const [params, setParams] = useState(defaultParams);
-  const { data } = useFetch(
+  const { data, loading } = useFetch(
     `http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?${new URLSearchParams(
       params
     ).toString()}`,
@@ -82,6 +82,7 @@ const Movies = () => {
         <DataTable
           schema={schema}
           data={data.boxOfficeResult.dailyBoxOfficeList}
+          loading={loading}
         />
       )}
     </Wrapper>

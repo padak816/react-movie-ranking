@@ -9,11 +9,33 @@ import { ko } from "date-fns/esm/locale";
 const Filter = styled.div`
   display: flex;
   column-gap: 20px;
+  align-items: center;
 `;
 
 const Select = styled.select`
-  width: 100px;
-  height: 30px;
+  width: 120px;
+  height: 40px;
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 0px 3px;
+`;
+
+const Button = styled.button`
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: 0.5s;
+  background: #0d6efd;
+  color: #ffffff;
+  :hover {
+    background: #025ce2;
+  }
+  padding: 5px;
+  width: 70px;
+  height: 40px;
+  font-size: 16px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
 `;
 
 const yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
@@ -41,7 +63,7 @@ const SearchForm = ({ search }) => {
           showPopperArrow={false}
         />
       </div>
-      <button onClick={onClickSearch}>조회</button>
+      <Button onClick={onClickSearch}>조회</Button>
     </Filter>
   );
 };
