@@ -3,12 +3,15 @@ import styled from "styled-components";
 import SearchForm from "./SearchForm";
 import moment from "moment";
 import { useFetch } from "use-http";
+import { toThousandCommas } from "./common/format";
 import DataTable from "./DataTable";
+import DoughtnutChartPanel from "./DoughtnutChartPanel";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 20px;
+  row-gap: 28px;
+  width: 1000px;
 `;
 
 const Title = styled.div`
@@ -18,11 +21,6 @@ const Title = styled.div`
 const defaultParams = {
   key: "ba5f4a3506549d1f47ce426b72ced220",
   targetDt: moment().subtract(1, "day").format("YYYYMMDD"),
-};
-
-const toThousandCommas = (number) => {
-  var regexp = /\B(?=(\d{3})+(?!\d))/g;
-  return number !== undefined ? number.toString().replace(regexp, ",") : "";
 };
 
 const Movies = () => {
@@ -77,7 +75,12 @@ const Movies = () => {
     <Wrapper>
       <Title>🎬 박스오피스 랭킹</Title>
       <SearchForm search={search} />
-      <div>차트</div>
+      {data?.boxOfficeResult && (
+        <DoughtnutChartPanel
+          title="title"
+          data={data.boxOfficeResult.dailyBoxOfficeList}
+        />
+      )}
       {data?.boxOfficeResult && (
         <DataTable
           schema={schema}

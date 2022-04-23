@@ -11,8 +11,8 @@ const Table = styled.table`
   thead {
     border: 1px solid #dee2ec;
   }
-  width: 900px;
-  height: 550px;
+  width: 1000px;
+  height: 500px;
 `;
 
 const Th = styled.th`
