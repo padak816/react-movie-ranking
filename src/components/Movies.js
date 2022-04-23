@@ -20,7 +20,7 @@ const Title = styled.div`
 `;
 
 const defaultParams = {
-  key: "ba5f4a3506549d1f47ce426b72ced220",
+  key: `${process.env.REACT_APP_API_KEY}`,
   targetDt: moment().subtract(1, "day").format("YYYYMMDD"),
 };
 
