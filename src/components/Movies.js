@@ -6,6 +6,7 @@ import { useFetch } from "use-http";
 import { toThousandCommas } from "./common/format";
 import DataTable from "./DataTable";
 import DoughtnutChartPanel from "./DoughtnutChartPanel";
+import TypeIt from "typeit-react";
 
 const Wrapper = styled.div`
   display: flex;
@@ -73,13 +74,26 @@ const Movies = () => {
 
   return (
     <Wrapper>
-      <Title>🎬 박스오피스 랭킹</Title>
+      <Title>
+        <TypeIt
+          getBeforeInit={(instance) => {
+            instance
+              .type("🎬 박스오피스 순ㅇㅜㅣ")
+              .pause(750)
+              .delete(1)
+              .pause(300)
+              .delete(1)
+              .pause(300)
+              .delete(1)
+              .type("위 🎬");
+
+            return instance;
+          }}
+        />
+      </Title>
       <SearchForm search={search} />
       {data?.boxOfficeResult && (
-        <DoughtnutChartPanel
-          title="title"
-          data={data.boxOfficeResult.dailyBoxOfficeList}
-        />
+        <DoughtnutChartPanel data={data.boxOfficeResult.dailyBoxOfficeList} />
       )}
       {data?.boxOfficeResult && (
         <DataTable
